@@ -619,7 +619,11 @@ class DropDownPicker extends React.Component {
             ),
           ]}
         >
-          {this.state.choice.icon && !multiple && this.state.choice.icon()}
+          {this.state.choice.icon &&
+          !multiple &&
+          typeof this.state.choice.icon === 'function'
+            ? this.state.choice.icon()
+            : this.state.choice.icon}
           <Text
             style={[
               { color: '#000' }, // default label color
